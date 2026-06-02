@@ -1,84 +1,119 @@
-\documentclass[a4paper, 14pt]{article}
-% Pacotes para Português e Formatação
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[portuguese]{babel}
-\usepackage{geometry}
+\usepackage[brazil]{babel}
+\usepackage{float}
 
-% Imagens e Circuitos
-\usepackage{graphicx}
-\usepackage{circuitikz}
-
-% Ajustes e Comentários
-\geometry{a4paper, margin=2.5cm}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.8em}
-
-\usepackage{verbatim} 
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\begin{minipage}[c]{0.2\textwidth}
-    \centering
-    \includegraphics[width=2.5cm]{ufs.png} 
-\end{minipage}
-\begin{minipage}[c]{0.6\textwidth}
-    \centering
-    \footnotesize
-    %SERVIÇO PÚBLICO FEDERAL\\
-    %MINISTÉRIO DA EDUCAÇÃO\\
-    UNIVERSIDADE FEDERAL DE SERGIPE\\
-    CENTRO DE CIÊNCIAS EXATAS E TECNOLOGIA\\
-    DEPARTAMENTO DE COMPUTAÇÃO -- DCOMP\\
-    \vspace{5mm}
-    SISTEMAS DIGITAIS (COMP0514) \\
-    TURMA 1 - 2026.1\\
-    GRUPO 3: LUCCA DULTRA, JOAO VITAL, KARLOS GOMES
-\end{minipage}
-\begin{minipage}[c]{0.2\textwidth}
-    \centering
-    \includegraphics[width=2cm]{dcomp.png}\\
-    \vspace{2mm}
-\end{minipage}
-\vspace{1cm}
-\begin{center}
-    \textbf{\underline{RELATÓRIO DE PRÁTICAS EM SISTEMAS DIGITAIS - LAB XX}}
-    
-\end{center}
-\vspace{0.5cm}
-\textbf{\underline{MATÉRIAIS USADOS}}
-\begin{enumerate}
-\item Protoboard
-\item CI XXXX\\
-Funcionamento: XXXX [Ref to Datasheet]
-\item LED
-\item Resistor 1k
-\end{enumerate}
-\vspace{0.5cm}
-\textbf{\underline{ATIVIDADES}}
+\title{Título do Artigo}
 
-\vspace{0.3cm}
-\quad\textbf{Atividade 01:}
-Resumo;
-Logica;
-Ideias iniciais;
-Problemas encontrados;
-Solucoes;
-Execução;
-Fotos;
+\author{\IEEEauthorblockN{Francisco Passos dos Santos Alves}
+\IEEEauthorblockA{\textit{Departamento de Computação} \\
+\textit{Universidade Federal de Sergipe}\\
+Aracaju, Sergipe, Brasil \\
+email: francisco.alves@dcomp.ufs.br}
 
-\vspace{0.3cm}
-\quad\textbf{Atividade 02:}
+\and
 
-\vspace{0.3cm}
-\quad\textbf{Atividade 03:}
+\IEEEauthorblockN{João Vitor Vital Leão}
+\IEEEauthorblockA{\textit{Departamento de Computação} \\
+\textit{Universidade Federal de Sergipe}\\
+Aracaju, Sergipe, Brasil \\
+email: joao.leao2@dcomp.ufs.br}
 
-\vspace{0.6cm}
-\textbf{REFERÊNCIAS:}\\
-\textit{- Datasheets link \\ - Livro-texto}
+\and
+
+\IEEEauthorblockN{Lucca Pedreira Dultra}
+\IEEEauthorblockA{\textit{Departamento de Computação} \\
+\textit{Universidade Federal de Sergipe}\\
+Aracaju, Sergipe, Brasil \\
+email: lucca.dultra@dcomp.ufs.br}
+
+\and 
+
+\IEEEauthorblockN{Karlos Danyel Santos Gomes}
+\IEEEauthorblockA{\textit{Departamento de Computação} \\
+\textit{Universidade Federal de Sergipe}\\
+Aracaju, Sergipe, Brasil \\
+email: karlos.gomes2@dcomp.ufs.br}
+}
+
+\maketitle
+
+\begin{abstract}
+Escreva aqui o resumo do artigo.
+\end{abstract}
+
+\begin{IEEEkeywords}
+palavra-chave1, palavra-chave2, palavra-chave3, palavra-chave4
+\end{IEEEkeywords}
 
 
 
+\section{Introdução}
+
+Texto de introdução.
+
+
+
+\section{Fundamentação Teórica}
+
+Texto de fundamentação teórica.
+
+% \begin{figure}[H]
+% \centerline{\includegraphics[width=0.45\textwidth]{caminho/para/figura.png}}
+% \caption{Legenda da figura.}
+% \label{fig:exemplo}
+% \end{figure}
+
+
+
+\section{Desenvolvimento}
+
+Texto de desenvolvimento.
+
+
+
+\section{Resultados}
+
+Texto de resultados.
+
+
+
+\section{Conclusão}
+
+Texto de conclusão.
+
+
+
+\section*{Agradecimentos}
+
+Texto de agradecimentos.
+
+\begin{thebibliography}{99}
+
+\bibitem{ref1}
+A. Sobrenome, B. Sobrenome, \textit{Título do Livro}, Xª ed. Cidade: Editora, Ano.
+
+\bibitem{ref2}
+C. Sobrenome, ``Título do Artigo,'' \textit{Nome da Revista/Conferência}, vol. X, no. Y, pp. Z--ZZ, Ano.
+
+\bibitem{ref3}
+D. Sobrenome, ``Título do Documento Online,'' [Online]. Available: \url{https://exemplo.com}. [Accessed: Mês DD, AAAA].
+
+\end{thebibliography}
 
 \end{document}
