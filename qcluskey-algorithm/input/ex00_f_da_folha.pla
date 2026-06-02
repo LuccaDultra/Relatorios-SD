@@ -1,0 +1,19 @@
+.i 4
+.o 1
+0000 1  # mintermo 0
+0001 0  # mintermo 1
+0010 0  # mintermo 2
+0011 0  # mintermo 3
+0100 1  # mintermo 4
+0101 0  # mintermo 5
+0110 0  # mintermo 6
+0111 0  # mintermo 7
+1000 1  # mintermo 8
+1001 0  # mintermo 9
+1010 0  # mintermo 10
+1011 0  # mintermo 11
+1100 0  # mintermo 12
+1101 0  # mintermo 13
+1110 0  # mintermo 14
+1111 0  # mintermo 15
+.e
