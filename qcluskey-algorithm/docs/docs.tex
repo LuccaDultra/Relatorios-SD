@@ -1,0 +1,171 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+\lstdefinestyle{pla}{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  backgroundcolor=\color{gray!10},
+  aboveskip=4pt,
+  belowskip=4pt
+}
+
+\title{Algoritmo de Quine-McCluskey em C++ | Parte prática apenas}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este artigo documenta a implementação prática do algoritmo de Quine-McCluskey
+em C++, um minimizador de funções booleanas baseado em leitura de arquivos no
+formato PLA. São apresentados a estrutura do programa, o formato de entrada e
+saída adotado, e os resultados obtidos em três casos de teste.
+\end{abstract}
+
+\section{Introdução}
+
+A minimização de funções booleanas é um problema central no projeto de circuitos
+digitais. O algoritmo de Quine-McCluskey \cite{mccluskey1956} resolve esse
+problema de forma sistemática para qualquer número de variáveis. A implementação
+desenvolvida recebe um arquivo PLA como entrada, executa a minimização e gera
+um arquivo PLA de saída com a expressão booleana simplificada \cite{stroustrup2013}.
+
+\section{Estrutura do Programa}
+
+O programa é executado via linha de comando, recebendo o caminho do arquivo
+de entrada como argumento:
+
+\begin{lstlisting}[style=pla]
+./src input/arquivo.pla
+\end{lstlisting}
+
+Os arquivos de entrada ficam na pasta \texttt{input/} e o resultado é salvo
+automaticamente em \texttt{output/result.pla}. O fluxo interno segue três
+etapas: (1)~leitura do PLA e extração dos mintermos com saída 1;
+(2)~geração dos implicantes primos por combinações sucessivas;
+(3)~seleção da cobertura mínima.
+
+\section{Formato PLA}
+
+A diretiva \texttt{.i} indica o número de entradas e \texttt{.o} o número de
+saídas. Cada linha de dados contém os bits de entrada, um espaço e o valor
+da saída. O símbolo \texttt{-} representa \textit{don't care} e \texttt{.e}
+encerra o arquivo.
+
+\section{Resultados}
+
+\subsection{Caso 1: Função AND de 2 variáveis}
+
+\noindent\textbf{Entrada} (\texttt{input/and.pla}):
+\begin{lstlisting}[style=pla]
+.i 2
+.o 1
+11 1
+.e
+\end{lstlisting}
+
+\noindent\textbf{Saída} (\texttt{output/result.pla}):
+\begin{lstlisting}[style=pla]
+F = AB
+
+PLA output:
+.i 2
+.o 1
+11 1
+.e
+\end{lstlisting}
+
+A função AND só vale 1 quando ambas as entradas são 1. Como há apenas um
+mintermo, nenhuma simplificação é possível e o programa retorna $F = AB$.
+
+\subsection{Caso 2: Função de 3 variáveis}
+
+\noindent\textbf{Entrada} (\texttt{input/ex01\_funcao3var.pla}):
+\begin{lstlisting}[style=pla]
+.i 3
+.o 1
+0-0 1
+-11 1
+.e
+\end{lstlisting}
+
+\noindent\textbf{Saída} (\texttt{output/result.pla}):
+\begin{lstlisting}[style=pla]
+F = A'C' + BC
+
+PLA output:
+.i 3
+.o 1
+0-0 1
+-11 1
+.e
+\end{lstlisting}
+
+O implicante \texttt{0-0} representa $A'C'$, com $B$ irrelevante, e
+\texttt{-11} representa $BC$, com $A$ irrelevante.
+
+\subsection{Caso 3: Função de 4 variáveis}
+
+\noindent\textbf{Entrada} (\texttt{input/ex00\_f\_da\_folha.pla}):
+\begin{lstlisting}[style=pla]
+.i 4
+.o 1
+0-00 1
+-000 1
+.e
+\end{lstlisting}
+
+\noindent\textbf{Saída} (\texttt{output/result.pla}):
+\begin{lstlisting}[style=pla]
+F = A'C'D' + B'C'D'
+
+PLA output:
+.i 4
+.o 1
+0-00 1
+-000 1
+.e
+\end{lstlisting}
+
+O implicante \texttt{0-00} representa $A'C'D'$ e \texttt{-000} representa
+$B'C'D'$, cobrindo exatamente os mintermos 0, 4 e 8.
+
+\section{Código Fonte}
+
+O código fonte completo da implementação está disponível publicamente em:
+
+\begin{center}
+\url{https://github.com/LuccaDultra/Relatorios-SD/tree/main/PSD/Ciclo\%202/Lab\%206/qcluskey-algorithm}
+\end{center}
+
+\section{Conclusão}
+
+A implementação mostrou-se correta nos três casos testados, produzindo
+expressões mínimas coerentes com os mintermos fornecidos. O uso do formato
+PLA tanto na entrada quanto na saída facilita a integração com outras
+ferramentas de síntese lógica.
+
+\begin{thebibliography}{1}
+
+\bibitem{mccluskey1956}
+E.~J. McCluskey, ``Minimization of Boolean Functions,''
+\textit{Bell System Technical Journal}, vol.~35, no.~6,
+pp.~1417--1444, 1956.
+
+\bibitem{stroustrup2013}
+B.~Stroustrup, \textit{The C++ Programming Language}, 4th~ed.
+Upper Saddle River, NJ: Addison-Wesley, 2013.
+
+\end{thebibliography}
+
+\end{document}
